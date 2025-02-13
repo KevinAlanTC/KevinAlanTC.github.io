@@ -1,7 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de Diccionario</title>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+    <h1>Prueba de Diccionario Italiano-Español</h1>
+    <input type="text" id="wordInput" placeholder="Introduce una palabra en italiano">
+    <button onclick="buscarPalabra()">Buscar</button>
+    <div id="result"></div>
+
+    <!-- Enlazar el archivo ites_reverso.js -->
+    <script src="ites_reverso.js"></script>
+    <script>
+        async function buscarPalabra() {
+            const word = document.getElementById('wordInput').value;
+            const diccionario = new ites_Reverso({ maxexample: 2 });
+            const resultados = await diccionario.findTerm(word);
+            document.getElementById('result').innerHTML = JSON.stringify(resultados, null, 2);
+        }
+    </script>
 </body>
 </html>
